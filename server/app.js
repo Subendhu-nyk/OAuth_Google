@@ -1,9 +1,11 @@
+require('dotenv').config();
 const cookieSession = require('cookie-session')
 const express=require('express')
 const cors = require("cors");
 const passportSetup = require("./passport");
 const passport = require('passport')
-require('dotenv').config();
+const authRoute = require("./routes/auth");
+
 const app=express()
 app.use(cookieSession({
     name:"session",
@@ -19,6 +21,7 @@ app.use(cors({
     credentials:true,
 }))
 
+app.use("/auth", authRoute);
 app.listen(5000,()=>{
     console.log('server is running')
 })
