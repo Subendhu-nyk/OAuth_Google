@@ -1,8 +1,10 @@
+import Navbar from "./components/UI/navbar";
+import './App.css'
 
 function App() {
   return (
     <>
-    Google Authentication
+    <Navbar/>
     </>
   );
 }
