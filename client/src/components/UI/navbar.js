@@ -1,28 +1,35 @@
 import { Link } from "react-router-dom";
 
-const Navbar = ({user}) => {  
-  return (    
+const Navbar = ({ user }) => {
+  const logout = () => {
+    window.open("http://localhost:5000/auth/logout", "_self");
+  };
+  return (
     <div className="navbar">
-      <Link className="link" to="/">       
-          Google Auth     
-      </Link>{user ? (
+      <span className="logo">
+        <Link className="link" to="/">
+          Google auth
+        </Link>
+      </span>
+      {user ? (
         <ul className="list">
           <li className="listItem">
             <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSQKaS7LP80SEcKgz9-d_ORjkh1B9hPSUqkeI_mLSnDg&s"
+              src={user.photos[0].value}
               alt=""
               className="avatar"
             />
           </li>
-          <li className="listItem">Sam</li>
-          <li className="listItem">
+          <li className="listItem">{user.displayName}</li>
+          <li className="listItem" onClick={logout}>
             Logout
           </li>
-        </ul> ): (
+        </ul>
+      ) : (
         <Link className="link" to="login">
           Login
         </Link>
-      )}     
+      )}
     </div>
   );
 };
