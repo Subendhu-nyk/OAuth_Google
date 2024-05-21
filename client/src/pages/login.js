@@ -6,6 +6,9 @@ const Login = () => {
   const googleHandler=()=>{
     window.open("http://localhost:5000/auth/google", "_self");
   }
+  const facebookHandler=()=>{
+    window.open("http://localhost:5000/auth/gfacebook", "_self");
+  }
 
   return (
     <div className="login">
@@ -16,8 +19,8 @@ const Login = () => {
             <img src={Google} alt="" className="icon" />
             Google
           </div>
-          <div className="loginButton facebook">
-            <img src={Facebook} alt="" className="icon" />
+          <div className="loginButton facebook"  onClick={facebookHandler} >
+            <img src={Facebook} alt="" className="icon"/>
             Facebook
           </div>
           <div className="loginButton github" >

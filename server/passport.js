@@ -1,6 +1,7 @@
 require('dotenv').config();
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const passport = require("passport");
+const FacebookStrategy = require("passport-facebook").Strategy;
 
 console.log('GOOGLE_CLIENT_ID:', process.env.GOOGLE_CLIENT_ID); 
 console.log('GOOGLE_CLIENT_SECRET:', process.env.GOOGLE_CLIENT_SECRET);
@@ -21,6 +22,19 @@ passport.use(
     }
   )
 );
+
+passport.use(
+    new FacebookStrategy(
+      {
+        clientID: FACEBOOK_APP_ID,
+        clientSecret: FACEBOOK_APP_SECRET,
+        callbackURL: "/auth/facebook/callback",
+      },
+      function (accessToken, refreshToken, profile, done) {
+        done(null, profile);
+      }
+    )
+  );
 
 passport.serializeUser((user, done) => {
   done(null, user);
