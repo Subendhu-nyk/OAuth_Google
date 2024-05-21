@@ -3,8 +3,7 @@ import { posts } from '../constants/data'
 import Card from '../components/UI/card'
 
 const Home = () => {
-  return (   
-     
+  return (     
     <div className="home">
     {posts.map(post=>(
         <Card key={post.id} post={post}/>
